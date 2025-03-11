@@ -3,8 +3,12 @@ package com.example.gestionmedicalrdv.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
 
+@Entity
+@Data
 public class Patients extends Users {
     private String address;
     private String phoneNumber;
@@ -13,10 +17,10 @@ public class Patients extends Users {
     private List<Appointment> rendezVous;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<Prescription> prescriptions;
+    private List<Prescriptions> prescriptions;
 
     public Patients(String firstName, String lastName, String email, String password, String image, Roles role,
-            String address, String phoneNumber, List<Appointment> rendezVous, List<Prescription> prescriptions) {
+            String address, String phoneNumber, List<Appointment> rendezVous, List<Prescriptions> prescriptions) {
         super(firstName, lastName, email, password, image, Roles.PATIENT);
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -48,11 +52,11 @@ public class Patients extends Users {
         this.rendezVous = rendezVous;
     }
 
-    public List<Prescription> getPrescriptions() {
+    public List<Prescriptions> getPrescriptions() {
         return this.prescriptions;
     }
 
-    public void setPrescriptions(List<Prescription> prescriptions) {
+    public void setPrescriptions(List<Prescriptions> prescriptions) {
         this.prescriptions = prescriptions;
     }
 

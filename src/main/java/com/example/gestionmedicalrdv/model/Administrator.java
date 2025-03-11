@@ -1,5 +1,10 @@
 package com.example.gestionmedicalrdv.model;
 
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Data
+@Entity
 public class Administrator extends Users {
     private String department;
 

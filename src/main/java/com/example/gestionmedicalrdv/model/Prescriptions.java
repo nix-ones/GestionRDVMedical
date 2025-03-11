@@ -2,15 +2,18 @@ package com.example.gestionmedicalrdv.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import lombok.Data;
 
-
-public class Prescription {
+@Entity
+@Data
+public class Prescriptions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +36,7 @@ public class Prescription {
     private String motif;
     private LocalDateTime prescriptionDateTime;
 
-    public Prescription(Appointment appointment, Patients patient, Doctors docteur, String medicament, String motif,
+    public Prescriptions(Appointment appointment, Patients patient, Doctors docteur, String medicament, String motif,
             LocalDateTime prescriptionDateTime) {
         this.appointment = appointment;
         this.patient = patient;
